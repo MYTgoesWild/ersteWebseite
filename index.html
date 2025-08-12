@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ihr Name – Webseite</title>
+  <meta name="description" content="Schlichte, elegante One-Pager Vorlage.">
+  <meta name="color-scheme" content="light dark">
+  <style>
+    /* ——— Design-Variablen ——— */
+    :root{
+      --bg: #ffffff; --fg:#0b0f14; --muted:#5b646e;
+      --surface:#ffffff; --line:#e6e9ef; --brand:#0b0f14;
+      --radius:14px; --max:860px; --shadow: 0 8px 24px rgba(0,0,0,.06);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b0f14; --fg:#eef1f6; --muted:#a4adba;
+        --surface:#0f141b; --line:#1e2530; --brand:#eef1f6;
+        --shadow: 0 8px 24px rgba(0,0,0,.35);
+      }
+    }
+
+    /* ——— Grundlayout ——— */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--fg);
+      font:16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    header{
+      position:sticky; top:0; backdrop-filter:saturate(140%) blur(6px);
+      background: color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; height:64px;}
+    .brand{font-weight:700; letter-spacing:.2px; text-decoration:none; color:var(--fg)}
+    nav a{color:var(--muted); text-decoration:none; margin-left:18px}
+    nav a:hover{color:var(--fg)}
+    main{padding:56px 0}
+    section{padding:48px 0}
+
+    /* ——— Hero ——— */
+    .hero{padding:72px 0 36px; text-align:center}
+    .title{font-size: clamp(28px, 5vw, 48px); line-height:1.1; margin:0 0 10px; letter-spacing:-.3px}
+    .lead{max-width:640px; margin:0 auto 22px; color:var(--muted)}
+    .cta{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+    .btn{
+      display:inline-block; padding:12px 18px; border-radius:999px; text-decoration:none;
+      border:1px solid var(--line); color:var(--fg); background:var(--surface); box-shadow:var(--shadow);
+    }
+    .btn.primary{background:var(--fg); color:var(--bg); border-color:var(--fg)}
+    .btn:hover{transform:translateY(-1px)}
+    
+    /* ——— Karte/Blöcke ——— */
+    .card{
+      background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+      padding:22px; box-shadow:var(--shadow);
+    }
+    .grid{display:grid; gap:14px}
+    @media (min-width: 760px){ .grid{grid-template-columns: repeat(3,1fr)} }
+    .muted{color:var(--muted)}
+    footer{padding:36px 0; color:var(--muted); text-align:center; border-top:1px solid var(--line)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#">Ihr Name</a>
+      <nav aria-label="Hauptnavigation">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#about">Über</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1 class="title">Schlicht. Klar. Auf den Punkt.</h1>
+      <p class="lead">Eine minimalistische Vorlage für Landingpages, Portfolios oder Projekte. Schnell, zugänglich und ohne Abhängigkeiten.</p>
+      <div class="cta">
+        <a class="btn primary" href="#kontakt">Anfragen</a>
+        <a class="btn" href="#leistungen">Mehr erfahren</a>
+      </div>
+    </section>
+
+    <section id="leistungen">
+      <div class="grid">
+        <div class="card">
+          <h3>Beratung</h3>
+          <p class="muted">Kurze Beschreibung Ihres Angebots in zwei Sätzen. Klarer Nutzen, kein Marketing-Sprech.</p>
+        </div>
+        <div class="card">
+          <h3>Umsetzung</h3>
+          <p class="muted">Was liefern Sie konkret? Zeitrahmen, Formate, Ergebnisse. Prägnant formuliert.</p>
+        </div>
+        <div class="card">
+          <h3>Betreuung</h3>
+          <p class="muted">Optional: Support, Updates oder Retainer. Ein Satz genügt.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="card">
+        <h2>Über</h2>
+        <p class="muted">Ein kurzer Absatz über Sie oder das Projekt. Fokus auf Kompetenz und Mehrwert. Maximal 3–4 Zeilen, damit es luftig bleibt.</p>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="card">
+        <h2>Kontakt</h2>
+        <p class="muted">Schreiben Sie mir eine Nachricht – ich melde mich zeitnah.</p>
+        <!-- Für einfache Seiten genügt mailto (funktioniert mit lokalem E-Mail-Client) -->
+        <p><a class="btn" href="mailto:mail@ihre-domain.de">E-Mail senden</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="y"></span> Ihr Name</div>
+  </footer>
+
+  <script>
+    // Jahr automatisch setzen + weiches Ankern
+    document.getElementById('y').textContent = new Date().getFullYear();
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.getAttribute('href').slice(1), el=document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}) }
+      });
+    });
+  </script>
+</body>
+</html>
