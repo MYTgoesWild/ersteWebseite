@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paul Greuel – Personal Brand & Projekte</title>
+  <meta name="description" content="Personal Brand von Paul Greuel – Student mit Fokus auf IT, Marktforschung & AI. Projekte filtern, Details ansehen und Kontakt aufnehmen." />
+  <meta property="og:title" content="Paul Greuel – Personal Brand" />
+  <meta property="og:description" content="IT · Marktforschung · AI – Projekte, Case Studies & Kontakt." />
+  <meta property="og:type" content="website" />
+  <style>
+    /* ===== Farbvariablen (aus deinem Bild extrahiert) ===== */
+    :root {
+      --sky:    #3DCDFD; /* RGB(61,205,253) */
+      --red:    #FE0B0B; /* RGB(254,11,11) */
+      --orange: #FE620B; /* RGB(254,98,11) */
+      --amber:  #FEB80C; /* RGB(254,184,12) */
+      --yellow: #FECD0B; /* RGB(254,205,11) */
+
+      --ink: #0f172a;     /* sehr dunkles Blau/Schwarz für Texte */
+      --paper: #ffffff;   /* Weiß */
+      --muted: #f3f4f6;   /* helles Grau für Hintergründe */
+      --radius: 16px;
+      --shadow: 0 10px 25px rgba(0,0,0,.08);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+
+    /* ===== Hero mit Farbverlauf über allen fünf Farben ===== */
+    .hero {
+      min-height: 46vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: #0b1324;
+      background: linear-gradient(90deg, var(--sky), var(--red), var(--orange), var(--amber), var(--yellow));
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 56px);
+      margin: 0 1rem 0.25rem 1rem;
+      letter-spacing: -0.5px;
+    }
+    .hero p { margin: 0 1rem 1.2rem 1rem; font-size: clamp(16px, 2.2vw, 20px); }
+
+    .hero .cta {
+      display: inline-block;
+      padding: 0.85rem 1.15rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.9);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .hero .cta:hover { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(0,0,0,.12); }
+
+    /* ===== Sektionen ===== */
+    .section { padding: clamp(28px, 6vw, 64px) 20px; }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+
+    /* ===== Farbpalette ===== */
+    .palette {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px;
+    }
+    .swatch {
+      border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow); background: var(--muted);
+    }
+    .swatch .color { height: 110px; }
+    .swatch .meta { padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .tag { font: 600 14px/1 ui-sans-serif, system-ui; padding: 6px 10px; border-radius: 999px; background: var(--muted); }
+    .meta code { font-weight: 700; }
+    .copy { cursor: pointer; border: none; padding: 6px 10px; border-radius: 8px; background: #111; color: #fff; font-weight: 600; }
+    .copy:focus { outline: 2px solid #000; outline-offset: 2px; }
+
+    /* ===== Beispiel-Karten, jede mit einer Akzentfarbe ===== */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .card {
+      border-radius: var(--radius); background: var(--paper); box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .card h3 { margin: 0 0 8px 0; font-size: 20px; }
+    .card p { margin: 0; color: #374151; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-weight: 700; font-size: 13px; }
+
+    .accent-sky    { background: var(--sky);    color: #00233a; }
+    .accent-red    { background: var(--red);    color: #fff; }
+    .accent-orange { background: var(--orange); color: #fff; }
+    .accent-amber  { background: var(--amber);  color: #3a2400; }
+    .accent-yellow { background: var(--yellow); color: #3a2a00; }
+
+    /* ===== Demo-Buttons in allen Farben ===== */
+    .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      appearance: none; border: none; border-radius: 999px; padding: 10px 14px; font-weight: 700;
+      box-shadow: var(--shadow); cursor: pointer; transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 16px 30px rgba(0,0,0,.12); }
+    .btn:focus { outline: 2px solid #000; outline-offset: 2px; }
+
+    .btn-sky    { background: var(--sky);    color: #00233a; }
+    .btn-red    { background: var(--red);    color: #fff; }
+    .btn-orange { background: var(--orange); color: #fff; }
+    .btn-amber  { background: var(--amber);  color: #3a2400; }
+    .btn-yellow { background: var(--yellow); color: #3a2a00; }
+
+    footer { padding: 32px 20px; text-align: center; color: #6b7280; }
+      /* ===== Projekte: Filter, Grid & Karten ===== */
+    .filters { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 18px 0 6px; }
+    .search { flex: 1 1 260px; min-width: 220px; padding: 10px 12px; border-radius: 12px; border: 1px solid #e5e7eb; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip { border: none; padding: 8px 12px; border-radius: 999px; font-weight: 700; background: var(--muted); cursor: pointer; transition: transform .12s ease, box-shadow .12s ease; }
+    .chip:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+    .chip.active { box-shadow: var(--shadow); }
+
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .project-card { border-radius: var(--radius); box-shadow: var(--shadow); background: var(--paper); overflow: hidden; display: flex; flex-direction: column; }
+    .project-card .thumb { height: 140px; }
+    .project-card .body { padding: 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .project-card .title { margin: 0; font-size: 20px; }
+    .project-card .desc { margin: 0; color: #374151; font-size: 15px; }
+    .project-card .meta { display: flex; flex-wrap: wrap; gap: 8px; }
+    .project-card .actions { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* Gradients für Thumbnails */
+    .gradient-main   { background: linear-gradient(90deg, var(--sky), var(--red), var(--orange), var(--amber), var(--yellow)); }
+    .gradient-warm   { background: linear-gradient(135deg, var(--red), var(--orange), var(--amber)); }
+    .gradient-sun    { background: linear-gradient(135deg, var(--amber), var(--yellow)); }
+    .gradient-sky    { background: linear-gradient(135deg, var(--sky), var(--red)); }
+    .gradient-orange { background: linear-gradient(135deg, var(--orange), var(--amber)); }
+
+    /* Modal */
+    #modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.45); padding: 24px; }
+    #modal[open] { display: flex; }
+    .modal-card { background: var(--paper); border-radius: var(--radius); max-width: 780px; width: 100%; overflow: hidden; box-shadow: var(--shadow); }
+    .modal-header { height: 120px; }
+    .modal-body { padding: 18px; }
+    .modal-title { margin: 0 0 8px 0; font-size: 22px; }
+    .modal-actions { display: flex; gap: 10px; margin-top: 14px; }
+    .modal-close { position: absolute; right: 22px; top: 18px; background: rgba(0,0,0,.65); color: #fff; border: none; border-radius: 999px; width: 34px; height: 34px; cursor: pointer; font-weight: 800; }
+      /* ===== Projekte: Filter, Grid & Karten ===== */
+    .filters { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 18px 0 6px; }
+    .search { flex: 1 1 260px; min-width: 220px; padding: 10px 12px; border-radius: 12px; border: 1px solid #e5e7eb; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip { border: none; padding: 8px 12px; border-radius: 999px; font-weight: 700; background: var(--muted); cursor: pointer; transition: transform .12s ease, box-shadow .12s ease; }
+    .chip:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+    .chip.active { box-shadow: var(--shadow); }
+
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .project-card { border-radius: var(--radius); box-shadow: var(--shadow); background: var(--paper); overflow: hidden; display: flex; flex-direction: column; }
+    .project-card .thumb { height: 140px; }
+    .project-card .body { padding: 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .project-card .title { margin: 0; font-size: 20px; }
+    .project-card .desc { margin: 0; color: #374151; font-size: 15px; }
+    .project-card .meta { display: flex; flex-wrap: wrap; gap: 8px; }
+    .project-card .actions { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* Gradients für Thumbnails */
+    .gradient-main   { background: linear-gradient(90deg, var(--sky), var(--red), var(--orange), var(--amber), var(--yellow)); }
+    .gradient-warm   { background: linear-gradient(135deg, var(--red), var(--orange), var(--amber)); }
+    .gradient-sun    { background: linear-gradient(135deg, var(--amber), var(--yellow)); }
+    .gradient-sky    { background: linear-gradient(135deg, var(--sky), var(--red)); }
+    .gradient-orange { background: linear-gradient(135deg, var(--orange), var(--amber)); }
+
+    /* Modal */
+    #modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.45); padding: 24px; }
+    #modal[open] { display: flex; }
+    .modal-card { background: var(--paper); border-radius: var(--radius); max-width: 780px; width: 100%; overflow: hidden; box-shadow: var(--shadow); position: relative; }
+    .modal-header { height: 120px; }
+    .modal-body { padding: 18px; }
+    .modal-title { margin: 0 0 8px 0; font-size: 22px; }
+    .modal-actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+    .modal-close { position: absolute; right: 22px; top: 18px; background: rgba(0,0,0,.65); color: #fff; border: none; border-radius: 999px; width: 34px; height: 34px; cursor: pointer; font-weight: 800; }
+
+    /* ===== About, Testimonials, Kontakt ===== */
+    .about { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: center; }
+    .avatar { width: 100%; aspect-ratio: 1/1; border-radius: 50%; background: var(--muted); box-shadow: var(--shadow); display: grid; place-items: center; font-weight: 800; color: #6b7280; }
+    .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .fact { padding: 6px 10px; border-radius: 999px; font-weight: 700; background: var(--muted); }
+
+    .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .quote { background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; font-size: 15px; }
+    .quote footer { color: #6b7280; font-size: 13px; margin-top: 10px; }
+
+    .contact { text-align: center; }
+    .contact .btns { justify-content: center; }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <h1>Paul Greuel</h1>
+      <p>Student mit Fokus auf IT, Marktforschung & AI.</p>
+      <a class="cta" href="#projekte">Projekte ansehen ↓</a>
+      <span style="display:inline-block;width:10px"></span>
+      <a class="cta" href="#kontakt">Kontakt</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="about">
+      <div class="wrap">
+        <h2>About</h2>
+        <div class="about">
+          <div class="avatar" aria-hidden="true">PG</div>
+          <div>
+            <p>Ich kombiniere analytisches Denken aus der Marktforschung mit sauberer Software‑Umsetzung. Meine Projekte reichen von Web‑UIs über Daten‑Dashboards bis hin zu kleinen AI‑Prototypen. Wichtig sind mir Klarheit, Barrierefreiheit und pragmatische Lösungen.</p>
+            <div class="facts">
+              <span class="fact">Python & JS</span>
+              <span class="fact">Daten & Dashboards</span>
+              <span class="fact">AI‑Prototypen</span>
+              <span class="fact">Agile/Lean</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="projekte">
+      <div class="wrap">
+        <h2>Projekte</h2>
+        <div class="filters">
+          <input id="search" class="search" type="search" placeholder="Suche Projekte… (Titel/Tags)" aria-label="Projekte durchsuchen" />
+          <div class="chips" role="tablist" aria-label="Kategorien filtern">
+            <button class="chip active" data-filter="all" role="tab" aria-selected="true">Alle</button>
+            <button class="chip" data-filter="web" role="tab">Web</button>
+            <button class="chip" data-filter="data" role="tab">Data</button>
+            <button class="chip" data-filter="ai" role="tab">AI</button>
+            <button class="chip" data-filter="app" role="tab">App</button>
+          </div>
+        </div>
+
+        <div class="projects" id="projectGrid">
+          <article class="project-card" data-tags="app,data" data-details="Desktop‑Tool in Python/Tkinter, das Champion‑Fähigkeiten aus der Riot API zieht und als PDF exportiert. Fokus: klare UI, saubere API‑Nutzung, verlässlicher Export.">
+            <div class="thumb gradient-main" role="img" aria-label="Buntes Gradient‑Thumbnail"></div>
+            <div class="body">
+              <h3 class="title">LoL Ability Viewer</h3>
+              <p class="desc">Tkinter‑App: Champion‑Fähigkeiten anzeigen & als PDF exportieren.</p>
+              <div class="meta">
+                <span class="badge accent-orange">App</span>
+                <span class="badge accent-amber">Data</span>
+              </div>
+              <div class="actions">
+                <a class="btn btn-amber" href="#" target="_blank" rel="noreferrer">Code</a>
+                <button class="btn btn-red details">Details</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="data,ai,web" data-details="Analyse‑Suite für Match‑Historien: Spielmodus‑Erkennung, Lane‑Vergleich, Radar‑Charts & Heatmaps; Zeitverlauf‑Analysen für Team‑Performance.">
+            <div class="thumb gradient-sky" role="img" aria-label="Gradient‑Thumbnail"></div>
+            <div class="body">
+              <h3 class="title">Match‑History Analyzer</h3>
+              <p class="desc">Daten‑Analyse mit Charts, Lane‑Vergleich und Team‑KPIs.</p>
+              <div class="meta">
+                <span class="badge accent-amber">Data</span>
+                <span class="badge accent-red">AI</span>
+                <span class="badge accent-yellow">Web</span>
+              </div>
+              <div class="actions">
+                <a class="btn btn-sky" href="#" target="_blank" rel="noreferrer">Live</a>
+                <a class="btn btn-amber" href="#" target="_blank" rel="noreferrer">Code</a>
+                <button class="btn btn-red details">Details</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="data,web" data-details="Robustes Web‑Scraping für ArmedAngels: Sitemap‑Handling, Filterung, Deduplikation und strukturierte Datenablage; Grundlage für Nachhaltigkeits‑Analysen.">
+            <div class="thumb gradient-orange" role="img" aria-label="Gradient‑Thumbnail"></div>
+            <div class="body">
+              <h3 class="title">Sustainable Fashion Scraper</h3>
+              <p class="desc">E‑Com‑Scraper mit Link‑Deduplizierung & sauberen Produkt‑Daten.</p>
+              <div class="meta">
+                <span class="badge accent-amber">Data</span>
+                <span class="badge accent-yellow">Web</span>
+              </div>
+              <div class="actions">
+                <a class="btn btn-amber" href="#" target="_blank" rel="noreferrer">Code</a>
+                <button class="btn btn-red details">Details</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="ai,data" data-details="Szenarien für Wearables in der Prävention: Literatur‑Scan, Evidenz‑Bewertung und ökonomische Modelle; Fokus auf EU‑Regulatorik & Datenschutz.">
+            <div class="thumb gradient-warm" role="img" aria-label="Gradient‑Thumbnail"></div>
+            <div class="body">
+              <h3 class="title">AI & Wearables – Szenarien</h3>
+              <p class="desc">Forschungsprojekt zu Prävention, Evidenz & EU‑Regulatorik.</p>
+              <div class="meta">
+                <span class="badge accent-red">AI</span>
+                <span class="badge accent-amber">Data</span>
+              </div>
+              <div class="actions">
+                <button class="btn btn-red details">Details</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="web" data-details="Schneller One‑Pager mit starker Typografie, AA‑Kontrast, SEO‑Basics und Kontakt‑CTA.">
+            <div class="thumb gradient-sun" role="img" aria-label="Gradient‑Thumbnail"></div>
+            <div class="body">
+              <h3 class="title">Portfolio One‑Pager</h3>
+              <p class="desc">Minimalistische Website‑Vorlage mit klaren Akzenten.</p>
+              <div class="meta">
+                <span class="badge accent-yellow">Web</span>
+              </div>
+              <div class="actions">
+                <a class="btn btn-sky" href="#" target="_blank" rel="noreferrer">Live</a>
+                <a class="btn btn-amber" href="#" target="_blank" rel="noreferrer">Code</a>
+                <button class="btn btn-red details">Details</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="data,web" data-details="Interaktives KPI‑Dashboard mit Filtern, Export und barrierefreier Tastatur‑Navigation.">
+            <div class="thumb gradient-main" role="img" aria-label="Gradient‑Thumbnail"></div>
+            <div class="body">
+              <h3 class="title">Survey‑/KPI‑Dashboard</h3>
+              <p class="desc">Leichtgewichtiges Reporting mit CSV‑Export.</p>
+              <div class="meta">
+                <span class="badge accent-amber">Data</span>
+                <span class="badge accent-yellow">Web</span>
+              </div>
+              <div class="actions">
+                <a class="btn btn-sky" href="#" target="_blank" rel="noreferrer">Live</a>
+                <a class="btn btn-amber" href="#" target="_blank" rel="noreferrer">Code</a>
+                <button class="btn btn-red details">Details</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials" style="background: var(--muted)">
+      <div class="wrap">
+        <h2>Testimonials</h2>
+        <div class="testimonials">
+          <blockquote class="quote">„Klarer Fokus auf Nutzer:innen und saubere Umsetzung – sehr angenehm in der Zusammenarbeit.“<footer>
+    © 2025 Paul Greuel · <a href="#about">About</a> · <a href="#projekte">Projekte</a> · <a href="#kontakt">Kontakt</a>
+  </footer></blockquote>
+          <blockquote class="quote">„Strukturiert, zuverlässig und immer mit Blick auf Messbarkeit und Wirkung.“<footer>– Mentor:in</footer></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="kontakt">
+      <div class="wrap">
+        <h2>Kontakt</h2>
+        <p>Interesse an einem Projekt oder Austausch? Ich freue mich auf deine Nachricht.</p>
+        <div class="btns">
+          <a class="btn btn-sky" href="mailto:pauljuliangreuel@gmail.com" aria-label="E-Mail senden">E‑Mail senden</a>
+          <a class="btn btn-orange" href="www.linkedin.com/in/paul-julian-greuel-567b151a2" >LinkedIn</a>
+          <a class="btn btn-amber" href="#" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="palette" style="background: var(--muted)">
+      <div class="wrap">
+        <h2>Styleguide: Palette & Hex‑Codes</h2>
+        <p>Klicke auf „Kopieren“, um den jeweiligen Farbwert in die Zwischenablage zu übernehmen.</p>
+        <div class="palette" role="list">
+          <article class="swatch" role="listitem">
+            <div class="color" style="background: var(--sky)"></div>
+            <div class="meta">
+              <span class="tag">Sky</span>
+              <code>#3DCDFD</code>
+              <button class="copy" data-hex="#3DCDFD" aria-label="Sky kopieren">Kopieren</button>
+            </div>
+          </article>
+          <article class="swatch" role="listitem">
+            <div class="color" style="background: var(--red)"></div>
+            <div class="meta">
+              <span class="tag">Rot</span>
+              <code>#FE0B0B</code>
+              <button class="copy" data-hex="#FE0B0B" aria-label="Rot kopieren">Kopieren</button>
+            </div>
+          </article>
+          <article class="swatch" role="listitem">
+            <div class="color" style="background: var(--orange)"></div>
+            <div class="meta">
+              <span class="tag">Orange</span>
+              <code>#FE620B</code>
+              <button class="copy" data-hex="#FE620B" aria-label="Orange kopieren">Kopieren</button>
+            </div>
+          </article>
+          <article class="swatch" role="listitem">
+            <div class="color" style="background: var(--amber)"></div>
+            <div class="meta">
+              <span class="tag">Amber</span>
+              <code>#FEB80C</code>
+              <button class="copy" data-hex="#FEB80C" aria-label="Amber kopieren">Kopieren</button>
+            </div>
+          </article>
+          <article class="swatch" role="listitem">
+            <div class="color" style="background: var(--yellow)"></div>
+            <div class="meta">
+              <span class="tag">Gelb</span>
+              <code>#FECD0B</code>
+              <button class="copy" data-hex="#FECD0B" aria-label="Gelb kopieren">Kopieren</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <footer>
+    Paul Greuel © 2025
+  </footer>
+
+  <script>
+    // Copy-to-clipboard für Hex-Codes
+    document.querySelectorAll('.copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const hex = btn.getAttribute('data-hex');
+        navigator.clipboard.writeText(hex).then(() => {
+          const prev = btn.textContent;
+          btn.textContent = 'Kopiert!';
+          setTimeout(() => (btn.textContent = prev), 1000);
+        });
+      });
+    });
+
+    // ===== Projekte: Filter & Suche =====
+    const chips = Array.from(document.querySelectorAll('.chip'));
+    const search = document.getElementById('search');
+    const cards  = Array.from(document.querySelectorAll('.project-card'));
+    let currentFilter = 'all';
+
+    function applyFilters() {
+      const q = (search?.value || '').toLowerCase().trim();
+      cards.forEach(card => {
+        const tags = (card.dataset.tags || '').toLowerCase();
+        const title = card.querySelector('.title')?.textContent.toLowerCase() || '';
+        const inCat = currentFilter === 'all' || tags.includes(currentFilter);
+        const inSearch = !q || title.includes(q) || tags.includes(q);
+        card.style.display = (inCat && inSearch) ? 'flex' : 'none';
+      });
+    }
+
+    chips.forEach(chip => chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      currentFilter = chip.dataset.filter || 'all';
+      applyFilters();
+    }));
+
+    if (search) search.addEventListener('input', applyFilters);
+
+    // ===== Projekte: Modal =====
+    const modal = document.createElement('div');
+    modal.id = 'modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    document.body.appendChild(modal);
+
+    function openModal(card) {
+      const title = card.querySelector('.title')?.textContent || 'Details';
+      const desc  = card.dataset.details || card.querySelector('.desc')?.textContent || '';
+      modal.innerHTML = `
+        <div class="modal-card">
+          <div class="modal-header gradient-main"></div>
+          <button class="modal-close" aria-label="Schließen">×</button>
+          <div class="modal-body">
+            <h3 class="modal-title">${title}</h3>
+            <p>${desc}</p>
+            <div class="modal-actions">
+              ${card.querySelector('.actions')?.innerHTML || ''}
+            </div>
+          </div>
+        </div>`;
+      modal.setAttribute('open', '');
+      modal.querySelector('.modal-close')?.focus();
+    }
+
+    function closeModal() { modal.removeAttribute('open'); }
+
+    modal.addEventListener('click', (e) => { if (e.target.id === 'modal') closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    document.querySelectorAll('.project-card .details').forEach(btn => {
+      btn.addEventListener('click', () => openModal(btn.closest('.project-card')));
+    });
+  </script>
+
+  <!-- Strukturierte Daten: Person & CreativeWork (vereinfachtes Beispiel) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Paul Greuel",
+    "jobTitle": "Student",
+    "url": "#",
+    "sameAs": ["#", "#"]
+  }
+  </script>
+</body>
+</html>
